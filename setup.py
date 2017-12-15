@@ -6,6 +6,7 @@ setup(
     name='arpwitch',
     version='2017.2',
     description='A modern arpwatch tool',
+    long_description='A modern arpwatch tool with JSON formatted oututs and easy options to exec commands when network changes are observed.',
 
     classifiers=[
         'Environment :: Console',
@@ -17,7 +18,7 @@ setup(
     keywords='arpwitch arpwatch arp network',
 
     author='Nicholas de Jong',
-    author_email='me(at)nicholasdejong.com',
+    author_email='me@nicholasdejong.com',
     url='https://github.com/ndejong/arpwitch',
     license='Apache',
 
