@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='arpwitch',
-    version='2017.1',
+    version='2017.2',
     description='A modern arpwatch tool',
 
     classifiers=[

@@ -20,7 +20,7 @@ class ArpWitchException(Exception):
 
 class ArpWitch:
 
-    VERSION = '2017.1'
+    VERSION = '2017.2'
     SNIFF_BATCH_SIZE = 16
     SNIFF_BATCH_TIMEOUT = 2
     SAVE_DATA_INTERVAL_DEFAULT = 30
