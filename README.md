@@ -1,5 +1,9 @@
 # arpwitch
 
+[![PyPI Version](https://img.shields.io/pypi/v/scapy.svg)](https://pypi.python.org/pypi/arpwitch/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/scapy.svg)](https://pypi.python.org/pypi/arpwitch/)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache_2.0-green.svg)](LICENSE)
+
 ```text
 usage: arpwitch [-f <datafile>] [-s <seconds>] [-a] [-n] [-i] [-h]
                 [-I <command>] [-H <command>] [-U <user>] [-q <address>] [-v]
