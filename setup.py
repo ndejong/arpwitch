@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='arpwitch',
-    version='2017.2',
+    version='2018.1',
     description='A modern arpwatch tool',
     long_description='A modern arpwatch tool with JSON formatted oututs and easy options to exec commands when network changes are observed.',
 
