@@ -9,6 +9,9 @@ import subprocess
 from arpwitch import LoggerManager
 from threading import Thread
 
+try: from ouilookup import OuiLookup
+except ModuleNotFoundError: pass
+
 
 logging.getLogger('scapy.runtime').setLevel(logging.ERROR)
 from scapy.all import sniff, ARP
@@ -20,12 +23,13 @@ class ArpWitchException(Exception):
 
 class ArpWitch:
 
-    VERSION = '2017.2'
+    VERSION = '2018.1'
     SNIFF_BATCH_SIZE = 16
     SNIFF_BATCH_TIMEOUT = 2
     SAVE_DATA_INTERVAL_DEFAULT = 30
 
     Log = None
+    OuiLookup = None
 
     meta = {}
     ip_data = {}
@@ -48,10 +52,18 @@ class ArpWitch:
 
     def __init__(self):
         self.arg_parse()
-        self.Log = LoggerManager.LoggerManager().build_logger('arpwitch',
-                                                              is_console_quiet=True,
-                                                              is_console_debug=self.debug
-                                                              )
+
+        self.Log = LoggerManager.LoggerManager().build_logger(
+            'arpwitch',
+            level=logging.INFO,
+            is_console_quiet=True,
+            is_console_debug=self.debug
+        )
+
+        try:
+            self.OuiLookup = OuiLookup()
+        except NameError:
+            self.OuiLookup = None
 
     def arg_parse(self):
         ArgParse = argparse.ArgumentParser(
@@ -236,16 +248,25 @@ class ArpWitch:
             print(json.dumps(self.do_query(self.query_address)), flush=True)
             exit(0)
 
+        if self.OuiLookup is None:
+            self.Log.warning('OuiLookup package not available to resolve hardware addresses - consider installing via pip')
+        else:
+            self.Log.info('Using the OuiLookup package to resolve hardware addresses')
+
         batch_has_new = False
         batch_interval_start = time.time()
         while True:
+
             subprocess_list_is_updated = False
             batch_timestamp = self.timestamp()
+            batch_packets = []
+
             try:
                 batch_packets = self.sniff_batch_arp_packets(self.SNIFF_BATCH_SIZE, self.SNIFF_BATCH_TIMEOUT)
             except PermissionError:
                 self.Log.error('arpwitch requires root privilages to sniff network interfaces!')
                 exit(1)
+
             for packet in batch_packets:
                 packet_data = self.store_arp_packet_event(packet, timestamp=batch_timestamp)
                 if len(packet_data) > 0:
@@ -311,11 +332,16 @@ class ArpWitch:
     def store_arp_packet_event(self, packet, timestamp):
         packet_data = {}
         if packet['ip_src'] != '0.0.0.0':
+
             hw_address = packet['hw_src']
             ip_address = packet['ip_src']
 
             hw_address_is_new = False
             ip_address_is_new = False
+
+            hw_vendor = None
+            if self.OuiLookup is not None:
+                hw_vendor = list(self.OuiLookup.query(hw_address)[0].values())[0]
 
             # ip_data
             if ip_address not in self.ip_data:
@@ -329,6 +355,8 @@ class ArpWitch:
                 }
             self.ip_data[ip_address][hw_address]['count'] += 1
             self.ip_data[ip_address][hw_address]['ts_last'] = timestamp
+            if self.OuiLookup is not None:
+                self.ip_data[ip_address][hw_address]['hw_vendor'] = hw_vendor
 
             # hw_data
             if hw_address not in self.hw_data:
@@ -342,6 +370,8 @@ class ArpWitch:
                 }
             self.hw_data[hw_address][ip_address]['count'] += 1
             self.hw_data[hw_address][ip_address]['ts_last'] = timestamp
+            if self.OuiLookup is not None:
+                self.hw_data[hw_address]['hw_vendor'] = hw_vendor
 
             packet_data = {
                 'ip': {ip_address: self.ip_data[ip_address], 'is_new': ip_address_is_new},
