@@ -62,5 +62,11 @@ Example #3 : query datafile for ARP event data about an ip-address
  $ arpwitch -f /var/lib/arpwitch/arpwitch.dat -q 192.168.0.1
 ```
 
-#### notes:
+#### Notes:
  - obtaining VLAN tags is not currently possible with scapy - https://github.com/secdev/scapy/issues/969
+
+## Authors
+This code is managed by [Verb Networks](https://github.com/verbnetworks).
+
+## License
+Apache 2 Licensed. See LICENSE file for full details.

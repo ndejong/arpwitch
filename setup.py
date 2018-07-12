@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='arpwitch',
-    version='2018.1',
+    version='2018.2',
     description='A modern arpwatch tool',
     long_description='A modern arpwatch tool with JSON formatted oututs and easy options to exec commands when network changes are observed.',
 
@@ -17,10 +17,10 @@ setup(
     ],
     keywords='arpwitch arpwatch arp network',
 
-    author='Nicholas de Jong',
-    author_email='me@nicholasdejong.com',
-    url='https://github.com/ndejong/arpwitch',
-    license='Apache',
+    author='Verb Networks Pty Ltd',
+    author_email='contact@verbnetworks.com',
+    url='https://github.com/verbnetworks/arpwitch',
+    license='Apache 2.0',
 
     packages=['arpwitch'],
     scripts=['bin/arpwitch'],
