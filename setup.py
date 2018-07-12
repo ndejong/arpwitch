@@ -20,7 +20,7 @@ setup(
     author='Verb Networks Pty Ltd',
     author_email='contact@verbnetworks.com',
     url='https://github.com/verbnetworks/arpwitch',
-    license='Apache 2.0',
+    license='Apache',
 
     packages=['arpwitch'],
     scripts=['bin/arpwitch'],
