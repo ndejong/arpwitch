@@ -11,6 +11,24 @@ observed.  Includes a hard coded convenience `--exec` that invokes nmap when new
 ## Project
 * https://github.com/verbnetworks/arpwitch/
 
+## Install
+#### via PyPi
+```bash
+pip3 install arpwitch
+```
+
+#### via Source
+```bash
+git clone https://github.com/verbnetworks/arpwitch
+cd arpwitch
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+python3 setup.py clean
+python3 setup.py test
+python3 setup.py install
+```
+
 ## Versions
 Legacy versions based on year-date (eg v2018.2) have been hard-deprecated in favour of a backward incompatible 
 standard versioning scheme (eg v0.2.0).  With this major revision change the arguments are quite different to 
