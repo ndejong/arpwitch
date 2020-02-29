@@ -1,72 +1,121 @@
 # arpwitch
 
-[![PyPI](https://img.shields.io/pypi/v/arpwitch.svg)](https://pypi.python.org/pypi/arpwitch)
-[![License: Apache 2.0](https://img.shields.io/badge/license-Apache_2.0-green.svg)](LICENSE)
+[![PyPi](https://img.shields.io/pypi/v/arpwitch.svg)](https://pypi.python.org/pypi/arpwitch/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/arpwitch.svg)](https://github.com/verbnetworks/arpwitch/)
+[![Build Status](https://api.travis-ci.org/verbnetworks/arpwitch.svg?branch=master)](https://travis-ci.org/verbnetworks/arpwitch/)
+[![License](https://img.shields.io/github/license/ndejong/arpwitch.svg)](https://github.com/ndejong/arpwitch)
 
+A modern arpwatch replacement with JSON formatted outputs and easy options to exec commands when network changes are 
+observed.  Includes a hard coded convenience `--exec` that invokes nmap when new network-addresses are observed.
+
+## Project
+* https://github.com/verbnetworks/arpwitch/
+
+## Versions
+Legacy versions based on year-date (eg v2018.2) have been hard-deprecated in favour of a backward incompatible 
+standard versioning scheme (eg v0.2.0).  With this major revision change the arguments are quite different to 
+previous versions however they are based on what-works-well in the field.
+
+## Usage
 ```text
-usage: arpwitch [-f <datafile>] [-s <seconds>] [-a] [-n] [-i] [-h]
-                [-I <command>] [-H <command>] [-U <user>] [-q <address>] [-v]
-                [-w] [-d]
+usage: arpwitch [-h] [-f <datafile>] [-i <seconds>] [-req | -noreq | -allreq]
+                [-rep | -norep | -allrep] [-e <command>] [-n] [-u <user>]
+                [-q <address>] [-v] [-w] [-d]
 
-A modern arpwatch tool with JSON formatted oututs and easy options to exec
-commands when network changes are observed.
-
-datafile arguments:
-  -f <datafile>  The arpwitch datafile - all arp event data is stored in this
-                 file in a simpe JSON format making it easy to query and
-                 inspect with external tools such as jq - this argument is
-                 required.
-  -s <seconds>   Seconds interval between datafile write to file - default is
-                 30 seconds.
-
-ARP mapping event selection arguments:
-  -a             Select all ARP mapping events packets regardless if they have
-                 been previously observed.
-  -n             Select only new ARP mapping events that have not been
-                 previously observed.
-
-ARP mapping event terminal output arguments:
-  event data is output to <stdout> as one event per line in a JSON format
-  which facilitates easy chaining to other tools, such as jq and others.
-
-  -i             Output to terminal the event data for ip-address (IP) arp
-                 packet events.
-  -h             Output to terminal the event data for network-hardware (HW)
-                 arp packet events.
-
-ARP mapping event command exec arguments:
-  the following exec command data substitutions are available: {IP}=ip-
-  address, {HW}=network-address, {hw}=network-address-short, {TS}=timestamp-
-  utc
-
-  -I <command>   Command to exec on ip-address (IP) arp packet events.
-  -H <command>   Command to exec on network-hardware (HW) arp packet events.
-  -U <user>      User to exec commands under, if not set this will be the same
-                 user that arpwitch is running.
+arpwitch v0.2.0
 
 optional arguments:
-  -q <address>   Query the <datafile> for an IP or HW address and return
-                 results in JSON formatted output and exit.
-  -v             Return the arpwitch version and exit.
-  -w             Supply one witch to the terminal and exit.
-  -d             Enable debug log output to <stderr> in the terminal.
+  -h, --help            show this help message and exit
+  -req, --new-request   Select ARP request packet events that include new
+                        ip/hw addresses not yet observed (DEFAULT).
+  -noreq, --no-request  Ignore all ARP request packet events.
+  -allreq, --all-request
+                        Select all ARP request packet events regardless if
+                        addresses have been previously observed.
+  -rep, --new-reply     Select only reply packet events that include new ip/hw
+                        addresses not yet observed (DEFAULT).
+  -norep, --no-reply    Ignore all ARP reply packet events.
+  -allrep, --all-reply  Select all ARP reply packet events regardless if the
+                        addresses have been previously observed.
 
-Example #1 : output new ip-address ARP data events
- $ arpwitch -n -f /var/lib/arpwitch/arpwitch.dat -i
+datafile arguments:
+  -f <datafile>, --datafile <datafile>
+                        The arpwitch datafile where ARP event data is stored
+                        as a JSON formatted file (REQUIRED). The datafile is
+                        also easy to manually query and inspect with external
+                        tools such as `jq`
+  -i <seconds>, --interval <seconds>
+                        Interval seconds between writing to the datafile
+                        (DEFAULT: 30)
 
-Example #2 : invoke nmap on new network-hardware ARP data events
- $ arpwitch -n -f /var/lib/arpwitch/arpwitch.dat -U root -H 'nmap -O \ 
-   -T4 -Pn -oN /var/lib/arpwitch/scans/{TS}_{hw}_{IP}.nmap {IP}'
+ARP event command execution arguments:
+  The following exec command substitutions are available: {IP}=ipv4-address,
+  {HW}=hardware-address, {TS}=timestamp-utc, {ts}=timestamp-utc-short
 
-Example #3 : query datafile for ARP event data about an ip-address
- $ arpwitch -f /var/lib/arpwitch/arpwitch.dat -q 192.168.0.1
+  -e <command>, --exec <command>
+                        Command line to exec on selected ARP events. Commands
+                        are run async
+  -n, --nmap            A hard coded convenience --exec that causes nmap to be
+                        run against the IPv4 target with nmap-XML formatted
+                        output written to the current-working-directory. This
+                        option cannot be used in conjunction with --exec.
+  -u <user>, --user <user>
+                        User to exec commands with, if not set this will be
+                        the same user context as arpwitch.
+
+run-mode arguments:
+  Switches that invoke run-modes other than ARP capture.
+
+  -q <address>, --query <address>
+                        Query the <datafile> for an IPv4 or HW address and
+                        return results in JSON formatted output and exit.
+  -v, --version         Return the arpwitch version and exit.
+  -w, --witch           Supply one witch to <stdout> and exit.
+  -d, --debug           Debug messages to stdout.
+
+A modern arpwatch replacement with JSON formatted outputs and easy options to
+execute commands when network changes are observed.
 ```
 
-#### Notes:
- - obtaining VLAN tags is not currently possible with scapy - https://github.com/secdev/scapy/issues/969
+## Examples
+```bash
+ndejong@laptop:$ sudo ./bin/arpwitch -n -f /dev/null | jq .
+2020-02-29T10:01:55+00:00 - INFO - arpwitch v0.2.0
+2020-02-29T10:01:55+00:00 - WARNING - ArpWitchDataFile.read() - no existing data file found
+{
+  "op": "request",
+  "ip": {
+    "addr": "192.168.1.1",
+    "new": true
+  },
+  "hw": {
+    "addr": "44:03:2c:00:00:00",
+    "new": true
+  },
+  "trigger": "new_ip_request"
+}
+{
+  "op": "reply",
+  "ip": {
+    "addr": "192.168.1.100",
+    "new": true
+  },
+  "hw": {
+    "addr": "cc:32:e5:00:00:00",
+    "new": true
+  },
+  "trigger": "new_ip_reply"
+}
+
+ndejong@laptop:$
+ndejong@laptop:$ ls -al arpwitch-nmap-*
+-rw-r--r--   1 root    root     5304 Feb 29 17:01 arpwitch-nmap-192.168.1.1-20200229Z100135.xml
+-rw-r--r--   1 root    root     6229 Feb 29 17:01 arpwitch-nmap-192.168.1.100-20200229Z100157.xml
+
+```
 
 ## Authors
-This code is managed by [Verb Networks](https://github.com/verbnetworks).
+This code is written by [Nicholas de Jong](https://github.com/ndejong) via the [Verb Networks](https://github.com/verbnetworks) lab project.
 
 ## License
-Apache 2 Licensed. See LICENSE file for full details.
+MIT licensed. See LICENSE file for full details.

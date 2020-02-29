@@ -1,2 +1,4 @@
 
-scapy-python3 >= 0.21
+scapy[basic]
+psutil
+ouilookup
