@@ -2,7 +2,7 @@
 from .__name__ import NAME
 from .__version__ import VERSION
 
-LOGGER_LEVEL_DEFAULT = 'info'
+LOGGER_LEVEL_DEFAULT = 'warning'
 SNIFF_BATCH_SIZE = 16
 SNIFF_BATCH_TIMEOUT = 2
 SAVE_DATA_INTERVAL_DEFAULT = 30

@@ -79,9 +79,17 @@ execute commands when network changes are observed.
 
 ## Examples
 ```bash
-ndejong@laptop:$ sudo ./bin/arpwitch -n -f /dev/null | jq .
-2020-02-29T10:01:55+00:00 - INFO - arpwitch v0.2.0
-2020-02-29T10:01:55+00:00 - WARNING - ArpWitchDataFile.read() - no existing data file found
+ndejong@laptop:$ sudo arpwitch --debug --nmap --datafile /dev/null | jq .
+2020-02-29T21:18:28+00:00 - INFO - arpwitch v0.2.1
+2020-02-29T21:18:28+00:00 - DEBUG - do_sniffer(datafile=/dev/null, save_interval=30, request_select=new, reply_select=new, exec=nmap -n -T4 -Pn -oX arpwitch-nmap-{IP}-{ts}.xml {IP}, exec_user=None)
+2020-02-29T21:18:28+00:00 - DEBUG - ArpWitchDataFile.read(filename=/dev/null)
+2020-02-29T21:18:28+00:00 - WARNING - ArpWitchDataFile.read() - no existing data file found
+2020-02-29T21:18:28+00:00 - DEBUG - arpwitch: 0.2.2
+2020-02-29T21:18:28+00:00 - DEBUG - starts: 0
+2020-02-29T21:18:28+00:00 - DEBUG - ts_first: 2020-02-29T21:18:28+00:00
+2020-02-29T21:18:28+00:00 - DEBUG - ts_last: 2020-02-29T21:18:28+00:00
+2020-02-29T21:18:28+00:00 - DEBUG - hw_count: 0
+2020-02-29T21:18:28+00:00 - DEBUG - ip_count: 0
 {
   "op": "request",
   "ip": {
@@ -89,28 +97,21 @@ ndejong@laptop:$ sudo ./bin/arpwitch -n -f /dev/null | jq .
     "new": true
   },
   "hw": {
-    "addr": "44:03:2c:00:00:00",
+    "addr": "cc:32:e5:00:00:00",
     "new": true
   },
   "trigger": "new_ip_request"
 }
-{
-  "op": "reply",
-  "ip": {
-    "addr": "192.168.1.100",
-    "new": true
-  },
-  "hw": {
-    "addr": "cc:32:e5:00:00:00",
-    "new": true
-  },
-  "trigger": "new_ip_reply"
-}
+2020-02-29T21:18:32+00:00 - DEBUG - ArpWitch.async_command_exec(<exec_command>, <packet_data>, <as_user>)
+2020-02-29T21:18:32+00:00 - DEBUG - ArpWitch.command_exec(command_line="nmap -n -T4 -Pn -oX arpwitch-nmap-192.168.1.1-20200229Z211832.xml 192.168.1.1")
+2020-02-29T21:18:32+00:00 - DEBUG - ArpWitch.async_command_exec_threads_wait(wait_max=30)
+2020-02-29T21:18:41+00:00 - DEBUG - ArpWitch.async_command_exec_threads_wait() - done
+2020-02-29T21:18:59+00:00 - DEBUG - ArpWitchDataFile.write(filename=/dev/null, data=<data>)
+2020-02-29T21:18:59+00:00 - DEBUG - ArpWitchDataFile.write() - datafile written
 
 ndejong@laptop:$
 ndejong@laptop:$ ls -al arpwitch-nmap-*
--rw-r--r--   1 root    root     5304 Feb 29 17:01 arpwitch-nmap-192.168.1.1-20200229Z100135.xml
--rw-r--r--   1 root    root     6229 Feb 29 17:01 arpwitch-nmap-192.168.1.100-20200229Z100157.xml
+-rw-r--r--   1 root    root     5304 Feb 29 17:01 arpwitch-nmap-192.168.1.1-20200229Z211832.xml
 
 ```
 
