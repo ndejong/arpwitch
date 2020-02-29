@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 from setuptools import setup, find_packages
-from OuiLookup import NAME
-from OuiLookup import VERSION
+from ArpWitch import NAME
+from ArpWitch import VERSION
 
 with open('README.md', 'r') as f:
     long_description = f.read()
@@ -11,7 +11,7 @@ with open('README.md', 'r') as f:
 setup(
     name=NAME,
     version=VERSION,
-    description='A modern arpwatch tool',
+    description='A modern arpwatch replacement with JSON formatted outputs and easy options to exec commands when network changes are observed',
 
     long_description=long_description,
     long_description_content_type='text/markdown',
