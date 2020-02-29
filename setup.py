@@ -35,7 +35,7 @@ setup(
     packages=find_packages(),
     scripts=['bin/arpwitch'],
 
-    install_requires=['scapy', 'ouilookup'],
+    install_requires=['scapy', 'ouilookup', 'psutil'],
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
 
