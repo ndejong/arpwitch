@@ -153,9 +153,10 @@ ndejong@laptop:$ arpwitch -f /tmp/arpwitch.dat -q 192.168.1.1
 }
 ```
 
-
 ## Authors
-This code is written by [Nicholas de Jong](https://github.com/ndejong) via the [Verb Networks](https://github.com/verbnetworks) lab project.
+* [Nicholas de Jong](https://nicholasdejong.com)
+* Managed by [Verb Networks](https://github.com/verbnetworks).
 
 ## License
-MIT licensed. See LICENSE file for full details.
+BSD-2-Clause - see LICENSE file for full details.
+NB: License change from Apache-2.0 to BSD-2-Clause in February 2020 at version 0.2.0
