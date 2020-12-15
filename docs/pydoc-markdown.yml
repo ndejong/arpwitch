@@ -1,0 +1,83 @@
+
+#@ def base_url():
+#@    if env.READTHEDOCS:
+#@      return "https://env-alias.readthedocs.io/en/" + env.READTHEDOCS_VERSION + "/"
+#@    else:
+#@      return None
+#@ end
+
+loaders:
+  - type: python
+    search_path: [../src]
+
+hooks:
+  pre-render:
+  - shut --cwd .. changelog -a --markdown > ../CHANGELOG.md
+
+processors:
+  - type: crossref
+  - type: filter
+    exclude_special: true
+    documented_only: true
+    exclude_private: true
+
+renderer:
+  type: hugo
+
+  markdown:
+    toc_maxdepth: 3
+    classdef_code_block: true
+    descriptive_class_title: false
+    signature_with_def: true
+    signature_with_decorators: false
+    signature_code_block: true
+    render_module_header: true
+    header_level_by_type:
+      Method: 3
+      Function: 3
+    source_linker:
+      type: github
+      repo: ndejong/arpwitch
+    source_format: '###### *[[view source]]({url})*'
+
+  config:
+    baseURL: #@ base_url()
+    title: arpwitch
+    theme: {clone_url: "https://github.com/alex-shpak/hugo-book.git"}
+
+  build_directory: docs/build
+  content_directory: content/docs # The "alex-shpak/hugo-book" theme only renders pages in "content/docs" into the nav.
+  default_preamble: {menu: main}
+
+  pages:
+
+    - title: Home
+      preamble:
+        weight: 10
+      name: index
+      source: ../README.md
+      directory: '..'
+
+    - title: Project
+      preamble:
+        weight: 40
+      name: project
+      source: project.md
+
+    - title: Changelog
+      preamble:
+       weight: 50
+      name: changelog
+      source: ../CHANGELOG.md
+
+    - title: Development
+      preamble:
+        weight: 60
+      name: development
+      source: development.md
+
+    - title: License
+      preamble:
+        weight: 70
+      name: license
+      source: ../LICENSE

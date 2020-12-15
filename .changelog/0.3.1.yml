@@ -1,0 +1,6 @@
+release_date: '2020-12-15'
+changes:
+- type: feature
+  component: general
+  description: Rearrange project structure
+  fixes: []

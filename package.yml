@@ -1,0 +1,37 @@
+
+name: arpwitch
+version: 0.3.2
+author: Nicholas de Jong <contact@nicholasdejong.com>
+license: BSD2
+description: A modern arpwatch replacement with JSON formatted outputs and easy options to exec commands when network changes are observed.
+url: https://arpwitch.readthedocs.io/
+
+typed: false
+
+entrypoints:
+  console_scripts:
+    - arpwitch = arpwitch.cli.entrypoints:arpwitch
+
+test-driver:
+  type: pytest
+
+requirements:
+  - python ^3.6
+  - scapy[basic]
+  - psutil
+  - ouilookup
+
+classifiers:
+  - "Environment :: Console"
+  - "Intended Audience :: System Administrators"
+  - "Intended Audience :: Information Technology"
+  - "Topic :: System :: Networking :: Monitoring"
+  - "Programming Language :: Python :: 3"
+  - "License :: OSI Approved :: BSD License"
+
+keywords:
+  - 'arpwitch'
+  - 'arpwatch'
+  - 'arp'
+  - 'network'
+  - 'security'
