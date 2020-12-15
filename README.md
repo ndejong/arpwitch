@@ -3,7 +3,8 @@
 [![PyPi](https://img.shields.io/pypi/v/arpwitch.svg)](https://pypi.python.org/pypi/arpwitch/)
 [![Python Versions](https://img.shields.io/pypi/pyversions/arpwitch.svg)](https://github.com/verbnetworks/arpwitch/)
 [![Build Status](https://api.travis-ci.org/verbnetworks/arpwitch.svg?branch=master)](https://travis-ci.org/verbnetworks/arpwitch/)
-[![License](https://img.shields.io/github/license/ndejong/arpwitch.svg)](https://github.com/ndejong/arpwitch)
+[![Read the Docs](https://img.shields.io/readthedocs/arpwitch)](https://arpwitch.readthedocs.io)
+![License](https://img.shields.io/github/license/verbnetworks/arpwitch.svg)
 
 A modern arpwatch replacement with JSON formatted outputs and easy options to exec commands when network changes are 
 observed.  Includes a hard coded convenience `--exec` that invokes nmap when new network-addresses are observed.
