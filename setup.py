@@ -23,7 +23,7 @@ requirements = [
 
 setuptools.setup(
   name = 'arpwitch',
-  version = '0.3.0',
+  version = '0.3.1',
   author = 'Nicholas de Jong',
   author_email = 'contact@nicholasdejong.com',
   description = 'A modern arpwatch replacement with JSON formatted outputs and easy options to exec commands when network changes are observed.',
