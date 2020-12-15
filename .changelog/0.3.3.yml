@@ -1,0 +1,6 @@
+release_date: '2020-12-15'
+changes:
+- type: fix
+  component: general
+  description: Fixes .gitignore that was preventing .yml files from being comitted
+  fixes: []
