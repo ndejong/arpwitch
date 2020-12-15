@@ -2,14 +2,9 @@
 import os
 import json
 
-from . import VERSION
-
-from . import timestamp
-from . import logger
-
-
-class ArpWitchDataFileException(Exception):
-    pass
+from arpwitch import __version__ as VERSION
+from arpwitch.ArpWitch import timestamp
+from arpwitch.ArpWitch import logger
 
 
 class ArpWitchDataFile:

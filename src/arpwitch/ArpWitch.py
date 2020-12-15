@@ -1,21 +1,17 @@
 
 import time
 
-from . import NAME
-from . import VERSION
-from . import SAVE_DATA_INTERVAL_DEFAULT
-
-from . import out
-from . import timestamp
-from . import logger
-from . import ArpWitchWitch
-from . import ArpWitchDataFile
-from . import ArpWitchSniffer
-from . import ArpWitchExec
-
-
-class ArpWitchException(Exception):
-    pass
+from arpwitch import __title__ as NAME
+from arpwitch import __version__ as VERSION
+from arpwitch import __save_data_interval__default__ as SAVE_DATA_INTERVAL_DEFAULT
+from arpwitch.utils.utils import out
+from arpwitch.utils.utils import timestamp
+from arpwitch.utils import logger
+from arpwitch.utils.witch import ArpWitchWitch
+from arpwitch.utils.datafile import ArpWitchDataFile
+from arpwitch.utils.sniffer import ArpWitchSniffer
+from arpwitch.utils.exe import ArpWitchExec
+from arpwitch.exceptions.ArpWitchException import ArpWitchException
 
 
 class ArpWitch:
@@ -46,8 +42,8 @@ class ArpWitch:
                 return {'ip': {address: data['ip'][address]}}
         return {}
 
-    def do_sniffer(self, datafile, save_interval=SAVE_DATA_INTERVAL_DEFAULT, request_select='new', reply_select='new', exec=None, exec_user=None):
-        logger.debug('do_sniffer(datafile={}, save_interval={}, request_select={}, reply_select={}, exec={}, exec_user={})'.format(datafile, save_interval, request_select, reply_select, exec, exec_user))
+    def do_sniffer(self, datafile, save_interval=SAVE_DATA_INTERVAL_DEFAULT, request_select='new', reply_select='new', exe=None, exec_user=None):
+        logger.debug('do_sniffer(datafile={}, save_interval={}, request_select={}, reply_select={}, exec={}, exec_user={})'.format(datafile, save_interval, request_select, reply_select, exe, exec_user))
 
         session = ArpWitchDataFile.read(filename=datafile)
         session['meta']['starts'] += 1
@@ -93,7 +89,7 @@ class ArpWitch:
 
                 if trigger is not None:
                     out({**packet_data, **{'trigger': trigger}}, indent=0, flush=True)
-                    arpwitchexec.async_command_exec_thread(exec, packet_data, as_user=exec_user)
+                    arpwitchexec.async_command_exec_thread(exe, packet_data, as_user=exec_user)
 
             if len(arpwitchexec.subprocess_list) > 0:
                 arpwitchexec.async_command_exec_threads_wait()

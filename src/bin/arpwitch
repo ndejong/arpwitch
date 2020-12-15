@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import os
+import re
+import sys
+
+try:
+    from arpwitch.cli import entrypoints
+except ModuleNotFoundError as e:
+    sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+    from arpwitch.cli import entrypoints
+
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(entrypoints.arpwitch())

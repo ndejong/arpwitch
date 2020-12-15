@@ -4,14 +4,10 @@ logging.getLogger('scapy.runtime').setLevel(logging.ERROR)
 from scapy.all import sniff, ARP
 
 import OuiLookup
-
-from . import SNIFF_BATCH_SIZE
-from . import SNIFF_BATCH_TIMEOUT
-from . import timestamp
-
-
-class ArpWitchSnifferException(Exception):
-    pass
+from arpwitch import __sniff_batch_size__ as SNIFF_BATCH_SIZE
+from arpwitch import __sniff_batch_timeout__ as SNIFF_BATCH_TIMEOUT
+from arpwitch.ArpWitch import timestamp
+from arpwitch.exceptions.ArpWitchException import ArpWitchException
 
 
 class ArpWitchSniffer:
@@ -50,7 +46,7 @@ class ArpWitchSniffer:
         elif address_type == 'hw':
             return ''.join(x for x in address if x in [':','0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'])
         else:
-            raise ArpWitchSnifferException('unsupported address_type', address_type)
+            raise ArpWitchException('unsupported address_type', address_type)
 
     def expand_packet_session_data(self, packet, session):
 

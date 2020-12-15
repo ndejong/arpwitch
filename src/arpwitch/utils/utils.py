@@ -3,6 +3,7 @@ import json
 import datetime
 
 TIMESTAMP_FORMAT = '%Y-%m-%dT%H:%M:%S+00:00'
+# TIMESTAMP_FORMAT = '%Y-%m-%d %H:%M:%S %Z%z'
 
 
 def timestamp():

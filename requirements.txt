@@ -1,4 +1,0 @@
-
-scapy[basic]
-psutil
-ouilookup

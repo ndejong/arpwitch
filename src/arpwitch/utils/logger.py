@@ -2,7 +2,7 @@
 import time
 import logging
 
-TIMESTAMP_FORMAT = '%Y-%m-%dT%H:%M:%S+00:00'
+TIMESTAMP_FORMAT = '%Y-%m-%d %H:%M:%S %Z%z'
 
 
 class LoggerException(Exception):
@@ -82,7 +82,7 @@ class Logger:
             fmt='%(asctime)s - %(levelname)s - %(message)s',
             datefmt=TIMESTAMP_FORMAT
         )
-        logging.Formatter.converter = time.gmtime
+        logging.Formatter.converter = time.localtime
 
         stream_handler.setFormatter(formatter)
         logger_init.addHandler(stream_handler)

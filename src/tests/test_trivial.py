@@ -1,5 +1,6 @@
 
-import ArpWitch
+from arpwitch import ArpWitch
+
 
 def test_name_exist():
     aw = ArpWitch
@@ -9,6 +10,7 @@ def test_name_exist():
 def test_version_exist():
     aw = ArpWitch
     assert aw.VERSION is not None
+
 
 def test_version_call():
     version = ArpWitch.ArpWitch().do_version()

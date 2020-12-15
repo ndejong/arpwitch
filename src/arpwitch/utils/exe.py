@@ -4,14 +4,9 @@ import psutil
 import subprocess
 from threading import Thread
 
-from . import EXEC_MAX_RUNTIME
-
-from . import logger
-from . import timestamp
-
-
-class ArpWitchExecException(Exception):
-    pass
+from arpwitch import __exec_max_runtime__ as EXEC_MAX_RUNTIME
+from arpwitch.ArpWitch import timestamp
+from arpwitch.ArpWitch import logger
 
 
 class ArpWitchExec:
