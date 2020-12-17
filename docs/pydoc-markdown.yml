@@ -58,6 +58,21 @@ renderer:
       source: ../README.md
       directory: '..'
 
+    - title: Command Line
+      preamble:
+        weight: 20
+      name: command-line
+      source: command-line.md
+      children:
+      - title: Usage
+        preamble:
+          weight: 21
+        source: command-line-usage.md
+      - title: Examples
+        preamble:
+          weight: 22
+        source: command-line-examples.md
+
     - title: Project
       preamble:
         weight: 40

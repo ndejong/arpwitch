@@ -16,6 +16,12 @@
 Please submit all feature-requests and bug-reports via Github issues - 
 * https://github.com/verbnetworks/arpwitch/issues
 
+## Versions
+Legacy versions based on year-date (eg v2018.2) have been hard-deprecated in favour of a backward incompatible 
+standard versioning scheme (eg v0.2.0).  Coinciding with this change in version numbers, the command-line args
+are quite different to previous versions as well.  The new command-line args are based on user experience and 
+what works well/better in the field.
+
 ## Contact
 * https://verbnetworks.com - the laboratory
 * https://nicholasdejong.com - personal

@@ -15,9 +15,9 @@ def arpwitch():
     from arpwitch.ArpWitch import ArpWitch
 
     parser = argparse.ArgumentParser(
-        description='{} v{}'.format(NAME, VERSION),
+        epilog='{} v{}'.format(NAME, VERSION),
         add_help=True,
-        epilog="""
+        description="""
             A modern arpwatch replacement with JSON formatted outputs and easy options to execute commands when network 
             changes are observed.
         """,
