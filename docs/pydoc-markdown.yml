@@ -1,7 +1,7 @@
 
 #@ def base_url():
 #@    if env.READTHEDOCS:
-#@      return "https://env-alias.readthedocs.io/en/" + env.READTHEDOCS_VERSION + "/"
+#@      return "https://arpwitch.readthedocs.io/en/" + env.READTHEDOCS_VERSION + "/"
 #@    else:
 #@      return None
 #@ end
