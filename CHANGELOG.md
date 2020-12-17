@@ -1,4 +1,4 @@
-## Unreleased (no release date)
+## 0.3.5 (2020-12-17)
 
 * __general__
     * **fix**: Update documentation
