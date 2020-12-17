@@ -62,7 +62,6 @@ renderer:
       preamble:
         weight: 20
       name: command-line
-      source: command-line.md
       children:
       - title: Usage
         preamble:
