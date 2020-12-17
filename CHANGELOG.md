@@ -1,4 +1,4 @@
-## Unreleased (no release date)
+## 0.3.6 (2020-12-17)
 
 * __general__
     * **fix**: Fixes documentation links
