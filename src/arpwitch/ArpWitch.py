@@ -18,7 +18,7 @@ class ArpWitch:
 
     def __init__(self, logger_level='warning'):
         logger.init(name=NAME, level=logger_level)
-        logger.info('{} v{}'.format(NAME, VERSION))
+        logger.debug('{} v{}'.format(NAME, VERSION))
 
     def do_version(self):
         logger.debug('do_version()')
