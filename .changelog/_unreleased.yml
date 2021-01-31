@@ -1,0 +1,6 @@
+release_date: null
+changes:
+- type: feature
+  component: general
+  description: Adds feature to cleanly exit on SIGINT
+  fixes: []

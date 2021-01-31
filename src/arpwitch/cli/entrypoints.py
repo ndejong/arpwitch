@@ -1,5 +1,6 @@
 
 import argparse
+from signal import signal, SIGINT
 
 from arpwitch import __title__ as NAME
 from arpwitch import __version__ as VERSION
@@ -11,8 +12,14 @@ from arpwitch.utils.utils import out
 from arpwitch.exceptions.ArpWitchException import ArpWitchException
 
 
+def sigint_handler(signal_received, frame):
+    print('SIGINT received, exiting.')
+    exit(0)
+
+
 def arpwitch():
-    from arpwitch.ArpWitch import ArpWitch
+    signal(SIGINT, sigint_handler)
+    from arpwitch.ArpWitch import ArpWitch  # late import to speed up situations where arpwitch() is not started
 
     parser = argparse.ArgumentParser(
         epilog='{} v{}'.format(NAME, VERSION),
@@ -146,7 +153,6 @@ def arpwitch():
         logger_level = LOGGER_DEFAULT_LEVEL
 
     try:
-
         arpwitch = ArpWitch(logger_level=logger_level)
         if args.version:
             out(arpwitch.do_version())
@@ -177,4 +183,3 @@ def arpwitch():
             print(err)
         print('')
         exit(9)
-
