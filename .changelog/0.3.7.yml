@@ -1,4 +1,4 @@
-release_date: null
+release_date: '2021-02-01'
 changes:
 - type: feature
   component: general

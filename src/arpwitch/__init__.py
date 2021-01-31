@@ -3,7 +3,7 @@
 
 __title__ = "arpwitch"
 __author__ = "Nicholas de Jong <contact@nicholasdejong.com>"
-__version__ = '0.3.6'
+__version__ = '0.3.7'
 __license__ = "BSD2"
 
 __logger_default_level__ = 'info'
