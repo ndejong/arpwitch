@@ -26,7 +26,7 @@ Includes a convenience `--exec` definition to invoke nmap when new network-addre
 user@computer:~$ pip install arpwitch
 ```
 
-## Command Line Usage
+## Command line usage
 Use arpwitch to nmap all new hosts on the network
 ```shell
 user@computer:~$ arpwitch --nmap --datafile /tmp/arpwitch.dat
