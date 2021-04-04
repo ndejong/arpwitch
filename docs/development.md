@@ -1,13 +1,17 @@
 # Env Alias
 
 ## Development
-The following tools are used to create and manage this package.
+The following development tools are used to help create and manage this project.
 
-### https://pypi.org/project/shut
-Package release and management tools - [documentation](https://github.com/NiklasRosenstein/shut/blob/develop/docs/docs/index.md)
+### shut
+[shut](https://pypi.org/project/shut) is a Python package management and release 
+tool - [documentation link](https://github.com/NiklasRosenstein/shut/blob/develop/docs/docs/index.md)
 ```shell script
 # Update package files
 $ shut pkg update
+
+# Test the package
+$ shut pkg test
 
 # Create a staged changelog entry for a fix/feature
 $ shut changelog --add fix --stage --message "Fixes bug"
@@ -27,8 +31,9 @@ $ shut pkg publish --test warehouse:pypi
 $ shut pkg publish warehouse:pypi
 ```
 
-### https://pypi.org/project/pydoc-markdown
-Documentation generation tools - [documentation](https://pydoc-markdown.readthedocs.io/en/latest/)
+### pydoc-markdown
+[pydoc-markdown](https://pypi.org/project/pydoc-markdown) is a documentation generation 
+tool that works well with Python modules - [documentation link](https://pydoc-markdown.readthedocs.io/en/latest/)
 ```shell script
 # Render documentation
 $ pydoc-markdown docs/pydoc-markdown.yml 
