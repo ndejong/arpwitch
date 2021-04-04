@@ -37,6 +37,6 @@ what works well/better in the field.
 * [pfSense FauxAPI](https://github.com/ndejong/pfsense_fauxapi) - A REST API interface for pfSense 2.3.x, 2.4.x, 2.5.x to facilitate devops.
 * [FauxAPI Python module](https://github.com/ndejong/pfsense_fauxapi_client_python) - Python client for pfSense FauxAPI.
 
-* [Digital Multimeter](https://github.com/ndejong/digital-multimeter) - Digital Multimeter provides both a command-line interface and a Python module interface to receive data from a variety of digital multimeters.
+* [Digital Multimeter](https://digital-multimeter.readthedocs.io) - Digital Multimeter provides both a command-line interface and a Python module interface to receive data from a variety of digital multimeters.
 * [SolarEdge Interface](https://solaredge-interface.readthedocs.io) - The SolarEdge Interface provides both a command-line interface and a Python module interface to interact with the SolarEdge API service.
 * [Philippines Data Mashup](https://github.com/ndejong/philippines-data) - Mashup of data from the Philippine Statistics Authority (PSA) and Google Maps; see the [heatmap](https://nicholasdejong.com/projects/philippines-data/heatmap/)
