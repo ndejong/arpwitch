@@ -39,4 +39,4 @@ user@computer:~$ arpwitch --nmap --datafile /tmp/arpwitch.dat
 * ReadTheDocs - [arpwitch.readthedocs.io](https://arpwitch.readthedocs.io)
 
 ---
-Copyright &copy; 2020 Nicholas de Jong
+Copyright &copy; 2021 Nicholas de Jong
