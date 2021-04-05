@@ -95,8 +95,9 @@ def arpwitch():
     )
     parser_group3.add_argument(
         '-n', '--nmap', required=False, default=False, action='store_true',
-        help='A hard coded convenience --exec that causes nmap to be run against the IPv4 target with nmap-XML formatted '
-             'output written to the current-working-directory.  This option cannot be used in conjunction with --exec.'
+        help='A hard coded convenience --exec that causes nmap to be run against the IPv4 target '
+             'with nmap-XML formatted output written to the current-working-directory. This option '
+             'cannot be used in conjunction with --exec.'
     )
     parser_group3.add_argument(
         '-u', '--user', required=False, type=str, metavar='<user>',
