@@ -1,5 +1,5 @@
 
-name: Build Tests
+name: build tests
 on: [push]
 
 jobs:
@@ -23,19 +23,19 @@ jobs:
     - name: Python version
       run: python -c "import sys; print(sys.version)"
 
-    - name: Install Python build dependencies
+    - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install --upgrade wheel
-        python -m pip install --upgrade setuptools pytest
         python -m pip install --upgrade scapy[basic] psutil ouilookup
 
     - name: python setup.py clean build
       run: |
+        python -m pip install --upgrade wheel setuptools
         python setup.py clean build
 
-    - name: python setup.py test
+    - name: pytest
       run: |
+        python -m pip install --upgrade pytest
         pytest
 
     - name: python setup.py install
