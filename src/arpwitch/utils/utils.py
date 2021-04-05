@@ -17,4 +17,4 @@ def out(data, indent=2, flush=False):
         if indent > 0:
             print(json.dumps(data, indent=indent), flush=flush)
         else:
-            print(json.dumps(data, indent=indent, separators=(',', ':')).replace('\n',''), flush=flush)
+            print(json.dumps(data, indent=indent, separators=(',', ':')).replace('\n', ''), flush=flush)

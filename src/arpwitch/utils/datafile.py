@@ -20,7 +20,7 @@ class ArpWitchDataFile:
         else:
             logger.warning('ArpWitchDataFile.read() - no existing data file found')
             data = {
-                'meta':{
+                'meta': {
                     'arpwitch': VERSION,
                     'starts': 0,
                     'ts_first': timestamp(),

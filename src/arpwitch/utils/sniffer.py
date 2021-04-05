@@ -29,12 +29,12 @@ class ArpWitchSniffer:
                 packet['op'] = 'reply'
 
             packet['src'] = {
-                'hw': self.scrub_address('hw',sniffed_packet.sprintf('%ARP.hwsrc%')),
-                'ip': self.scrub_address('ip',sniffed_packet.sprintf('%ARP.psrc%'))
+                'hw': self.scrub_address('hw', sniffed_packet.sprintf('%ARP.hwsrc%')),
+                'ip': self.scrub_address('ip', sniffed_packet.sprintf('%ARP.psrc%'))
             }
             packet['dst'] = {
-                'hw': self.scrub_address('hw',sniffed_packet.sprintf('%ARP.hwdst%')),
-                'ip': self.scrub_address('ip',sniffed_packet.sprintf('%ARP.pdst%'))
+                'hw': self.scrub_address('hw', sniffed_packet.sprintf('%ARP.hwdst%')),
+                'ip': self.scrub_address('ip', sniffed_packet.sprintf('%ARP.pdst%'))
             }
             packets.append(packet)
 
@@ -42,9 +42,10 @@ class ArpWitchSniffer:
 
     def scrub_address(self, address_type, address):
         if address_type == 'ip':
-            return ''.join(x for x in address if x in ['.','0','1','2','3','4','5','6','7','8','9'])
+            return ''.join(x for x in address if x in ['.', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'])
         elif address_type == 'hw':
-            return ''.join(x for x in address if x in [':','0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'])
+            return ''.join(x for x in address if x in [':', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                                                       'a', 'b', 'c', 'd', 'e', 'f'])
         else:
             raise ArpWitchException('unsupported address_type', address_type)
 

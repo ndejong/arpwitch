@@ -94,17 +94,22 @@ def init(name, level='info'):
     global __logger
     __logger = Logger(name, level=level).logger
 
+
 def debug(message):
     __logger.debug(message)
+
 
 def info(message):
     __logger.info(message)
 
+
 def warning(message):
     __logger.warning(message)
 
+
 def error(message):
     __logger.error(message)
+
 
 def critical(message):
     __logger.critical(message)

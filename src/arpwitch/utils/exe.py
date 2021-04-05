@@ -24,7 +24,7 @@ class ArpWitchExec:
                 IP=packet_data['ip']['addr'],
                 HW=packet_data['hw']['addr'],
                 TS=timestamp(),
-                ts=timestamp().replace('+00:00','').replace(':','').replace('-','').replace('T','Z') ,
+                ts=timestamp().replace('+00:00', '').replace(':', '').replace('-', '').replace('T', 'Z'),
             )
         except KeyError:
             logger.critical('Unsupported {KEY} supplied in exec command, valid values are {IP}, {HW} and {TS}')
@@ -49,7 +49,7 @@ class ArpWitchExec:
                     self.subprocess_list.pop(i)
             time.sleep(0.10)  # 100ms
             wait_elapsed = time.time() - wait_start
-            #logger.debug('subprocess_list_len={} wait_elapsed={}'.format(len(self.subprocess_list), wait_elapsed))
+            # logger.debug('subprocess_list_len={} wait_elapsed={}'.format(len(self.subprocess_list), wait_elapsed))
         for i, sp in enumerate(self.subprocess_list):
             if sp.poll() is None:
                 self.terminate_process(sp.pid)

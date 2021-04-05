@@ -42,8 +42,11 @@ class ArpWitch:
                 return {'ip': {address: data['ip'][address]}}
         return {}
 
-    def do_sniffer(self, datafile, save_interval=SAVE_DATA_INTERVAL_DEFAULT, request_select='new', reply_select='new', exe=None, exec_user=None):
-        logger.debug('do_sniffer(datafile={}, save_interval={}, request_select={}, reply_select={}, exec={}, exec_user={})'.format(datafile, save_interval, request_select, reply_select, exe, exec_user))
+    def do_sniffer(self, datafile, save_interval=SAVE_DATA_INTERVAL_DEFAULT, request_select='new',
+                   reply_select='new', exe=None, exec_user=None):
+
+        logger.debug('do_sniffer(datafile={}, save_interval={}, request_select={}, reply_select={}, exec={}, '
+                     'exec_user={})'.format(datafile, save_interval, request_select, reply_select, exe, exec_user))
 
         session = ArpWitchDataFile.read(filename=datafile)
         session['meta']['starts'] += 1
@@ -100,7 +103,8 @@ class ArpWitch:
             session['meta']['hw_count'] = len(session['hw'])
             session['meta']['ip_count'] = len(session['ip'])
 
-            if time.time() > session_save_time + save_interval and (session_data_count != session['meta']['hw_count'] + session['meta']['ip_count']):
+            if time.time() > session_save_time + save_interval and \
+                    (session_data_count != session['meta']['hw_count'] + session['meta']['ip_count']):
                 ArpWitchDataFile.write(filename=datafile, data=session)
                 session_save_time = time.time()
                 session_data_count = session['meta']['hw_count'] + session['meta']['ip_count']

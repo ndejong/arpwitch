@@ -34,7 +34,7 @@ jobs:
         # https://flake8.pycqa.org/en/latest/user/error-codes.html
         # https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes
         flake8 ./src --count --select=E9,F63,F7,F82 --show-source --statistics
-        flake8 ./src --count --exit-zero --max-complexity=20 --max-line-length=120 --statistics
+        flake8 ./src --count --exit-zero --max-complexity=20 --max-line-length=120 --statistics --ignore=E402
 
     - name: python setup.py clean build
       run: |

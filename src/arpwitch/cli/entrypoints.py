@@ -25,7 +25,7 @@ def arpwitch():
         epilog='{} v{}'.format(NAME, VERSION),
         add_help=True,
         description="""
-            A modern arpwatch replacement with JSON formatted outputs and easy options to execute commands when network 
+            A modern arpwatch replacement with JSON formatted outputs and easy options to execute commands when network
             changes are observed.
         """,
     )
