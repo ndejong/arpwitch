@@ -46,6 +46,6 @@ setuptools.setup(
   },
   cmdclass = {},
   keywords = ['arpwitch', 'arpwatch', 'arp', 'network', 'security'],
-  classifiers = ['Environment :: Console', 'Intended Audience :: System Administrators', 'Intended Audience :: Information Technology', 'Topic :: System :: Networking :: Monitoring', 'Programming Language :: Python :: 3.6', 'Programming Language :: Python :: 3.7', 'Programming Language :: Python :: 3.8', 'License :: OSI Approved :: BSD License'],
+  classifiers = ['Environment :: Console', 'Intended Audience :: System Administrators', 'Intended Audience :: Information Technology', 'Topic :: System :: Networking :: Monitoring', 'Programming Language :: Python :: 3', 'License :: OSI Approved :: BSD License'],
   zip_safe = True,
 )

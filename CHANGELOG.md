@@ -1,3 +1,8 @@
+## 0.3.7 (2021-02-01)
+
+* __general__
+    * **feature**: Adds feature to cleanly exit on SIGINT
+
 ## 0.3.6 (2020-12-17)
 
 * __general__

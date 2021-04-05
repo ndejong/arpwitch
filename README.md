@@ -35,7 +35,6 @@ user@computer:~$ arpwitch --nmap --datafile /tmp/arpwitch.dat
 ## Project
 * Github - [github.com/verbnetworks/arpwitch](https://github.com/verbnetworks/arpwitch)
 * PyPI - [pypi.python.org/pypi/arpwitch](https://pypi.python.org/pypi/arpwitch/)
-* TravisCI - [travis-ci.org/github/verbnetworks/arpwitch](https://travis-ci.org/github/verbnetworks/arpwitch)
 * ReadTheDocs - [arpwitch.readthedocs.io](https://arpwitch.readthedocs.io)
 
 ---
