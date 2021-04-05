@@ -1,0 +1,6 @@
+release_date: '2021-04-06'
+changes:
+- type: fix
+  component: general
+  description: Migrate from TravisCI to Github-Actions and add Flake8 lint testing
+  fixes: []
