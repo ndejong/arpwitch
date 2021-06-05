@@ -1,0 +1,6 @@
+release_date: '2021-06-05'
+changes:
+- type: fix
+  component: general
+  description: Includes click requirement with version >=7.1
+  fixes: []
