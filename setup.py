@@ -16,6 +16,7 @@ else:
   long_description = None
 
 requirements = [
+  'click >=7.1.0',
   'scapy[basic]',
   'psutil',
   'ouilookup',
