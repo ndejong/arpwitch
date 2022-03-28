@@ -1,0 +1,5 @@
+changes:
+- type: fix
+  component: general
+  description: Black formatting; added Pylint and fixed various pylint warnings; Remove
+    click package requirement
