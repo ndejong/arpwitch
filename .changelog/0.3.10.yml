@@ -3,3 +3,4 @@ changes:
   component: general
   description: Black formatting; added Pylint and fixed various pylint warnings; Remove
     click package requirement
+release_date: '2022-03-29'
