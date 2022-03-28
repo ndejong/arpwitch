@@ -1,18 +1,17 @@
-
-from arpwitch import ArpWitch
+from arpwitch import arp_witch
 
 
 def test_name_exist():
-    aw = ArpWitch
+    aw = arp_witch
     assert aw.NAME is not None
 
 
 def test_version_exist():
-    aw = ArpWitch
+    aw = arp_witch
     assert aw.VERSION is not None
 
 
 def test_version_call():
-    version = ArpWitch.ArpWitch().do_version()
+    version = arp_witch.ArpWitch().do_version()
     assert type(version) is dict
-    assert 'version' in version.keys()
+    assert "version" in version.keys()

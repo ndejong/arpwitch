@@ -12,12 +12,18 @@ entrypoints:
   console_scripts:
     - arpwitch = arpwitch.cli.entrypoints:arpwitch
 
-test-driver:
-  type: pytest
+test-drivers:
+  - type: pytest
+    parallelism: 8
+  - type: pylint
+    args: [ '--fail-under=9.0', '--ignore=vendor', '--ignore=tests', '--indent-string="    "', '--disable=W1202,W1203,C0209' ]
+
+templates:
+  - type: pylintrc
+    use: shut
 
 requirements:
   - python ^3.6
-  - click >=7.1
   - scapy[basic]
   - psutil
   - ouilookup

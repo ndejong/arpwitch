@@ -1,9 +1,7 @@
-
 class ArpWitchWitch:
-
     @staticmethod
     def witch():
-        return '''
+        return """
                     %
                     @@            ,@@@@(@,
                     @@@@.     @@@@@@@@@@@@@@
@@ -37,4 +35,4 @@ class ArpWitchWitch:
                               @@@@
                                 @@@
                                  %@
-        '''
+        """

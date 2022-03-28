@@ -1,0 +1,18 @@
+# This file was automatically generated via Shut.
+# Run `shut pkg update` to regenerate it.
+
+[MASTER]
+disable =
+  attribute-defined-outside-init,
+  bad-continuation,
+  invalid-name,
+  missing-class-docstring,
+  missing-function-docstring,
+  missing-module-docstring,
+  no-init,
+  no-else-continue,
+  no-else-return,
+  too-few-public-methods,
+  unnecessary-lambda
+indent-string='  '
+max-line-length = 120

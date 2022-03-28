@@ -1,4 +1,0 @@
-
-
-class ArpWitchException(Exception):
-    pass
