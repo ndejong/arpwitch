@@ -10,9 +10,9 @@ loaders:
   - type: python
     search_path: [../src]
 
-hooks:
-  pre-render:
-  - shut --cwd .. changelog -a --markdown > ../CHANGELOG.md
+#hooks:
+#  pre-render:
+#  - shut --cwd .. changelog -a --markdown > ../CHANGELOG.md
 
 processors:
   - type: crossref
@@ -78,11 +78,11 @@ renderer:
       name: project
       source: project.md
 
-    - title: Changelog
-      preamble:
-       weight: 50
-      name: changelog
-      source: ../CHANGELOG.md
+#    - title: Changelog
+#      preamble:
+#       weight: 50
+#      name: changelog
+#      source: ../CHANGELOG.md
 
     - title: Development
       preamble:

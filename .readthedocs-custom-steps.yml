@@ -1,3 +1,0 @@
-
-steps:
-  - pydoc-markdown --build --site-dir $SITE_DIR -vv docs/pydoc-markdown.yml
