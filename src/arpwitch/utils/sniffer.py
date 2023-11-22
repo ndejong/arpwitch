@@ -1,6 +1,7 @@
 
 import logging
-import OuiLookup
+import os
+import csv
 
 from .utils import timestamp
 from arpwitch.exceptions import ArpWitchException
@@ -49,6 +50,7 @@ class ArpWitchSniffer:
             raise ArpWitchException("unsupported address_type", address_type)
 
     def expand_packet_session_data(self, packet, session):
+        oui_path = "/usr/share/ieee-data/oui.csv"
 
         hw_address_is_new = False
         ip_address_is_new = False
@@ -57,7 +59,21 @@ class ArpWitchSniffer:
         ip_address = packet["src"]["ip"]
 
         # lookup hw_vendor name
-        hw_vendor = list(OuiLookup.OuiLookup().query(hw_address)[0].values())[0]
+        hw_vendor = ''.join(hw_address.split(":")[:3]).upper()
+
+        if os.path.exists(oui_path):
+            # check if the CSV file from ieee-data exists
+            with open(oui_path, "r") as oui_file:
+                reader = csv.DictReader(oui_file)
+                for row in reader:
+                    if row["Assignment"] == hw_vendor:
+                        hw_vendor = row["Organization Name"]
+                        break
+                else:
+                    hw_vendor = None  # if vendor is not found in the CSV
+        else:
+            from ouilookup import OuiLookup
+            hw_vendor = list(OuiLookup().query(hw_address)[0].values())[0]
 
         # update session['ip'] data
         if ip_address not in session["ip"].keys():
